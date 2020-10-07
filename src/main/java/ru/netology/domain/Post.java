@@ -2,118 +2,33 @@ package ru.netology.domain;
 
 public class Post {
 
-    private int postId; // идентификатор поста
+    private int id; // идентификатор записи
+    private int ownerId; // идентификатор владельца стены, на которой размещена запись
+    private int fromId; // идентификатор автора записи (от чьего имени опубликована запись)
+    private int createdBy; // идентификатор администратора, который опубликовал запись. Возвращается в записях, опубликованных менее 24 часов назад
+    private int date; // время публикации записи в формате unixtime
+    private String text; // текст записи
+    private int replyOwnerId; // идентификатор владельца записи, в ответ на которую была оставлена текущая
+    private int replyPostId; // идентификатор записи, в ответ на которую была оставлена текущая
+    private int friendsOnly; // 1, если запись была создана с опцией «Только для друзей»
+    private CommentsInfo comments; // информация о комментариях к записи, объект с полями: count, canPost, groupsCanPost, canClose, canOpen
+    private String copyright; // источник материала
+    private LikesInfo likes; // информация о лайках к записи, объект с полями
+    private RepostsInfo reposts; // информация о репостах записи («Рассказать друзьям»), объект с полями: count, userReposted
+    private ViewsInfo views; // информация о просмотрах записи. Объект с единственным полем: count
+    private String postType; // тип записи, может принимать следующие значения: post, copy, reply, postpone, suggest
+    private PostSourceInfo postSource; // информация о способе размещения записи
+    // private ? attachments; примечание: в задании сказано, что array следует пропустить
+    private GeoInfo geo; // информация о местоположении , содержит поля: type, coordinates, place
 
-    private String miniPhoto; // миниатюра пользователя
-    private boolean onlineOffline; // онлайн или не в сети
+    private int signerId; // идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем
+    // private ? copyHistory; // примечание: в задании сказано, что array следует пропустить
+    private int[] canPin= { 0 , 1 }; //
+    private int[] canDelete= { 0 , 1 }; //
+    private int[] canEdit= { 0 , 1 }; //
+    private int[] isPinned= { 1 }; //
+    private int[] markedAsAds= { 0 , 1 }; //
+    private boolean isFavorite; //
+    private int postponedId; //
 
-    private String date; // дата опубликования поста
-    private String time; // время опубликования поста
-
-    private String text; // текст поста
-
-    private String image; // изображение (фотография)
-    private String link; // ссылка во внешнее приложение
-
-    private int like; // нравится
-    private String comment; // комментарий
-    private int toShare; // поделиться
-    private int numberOfViews; // количество просмотров
-
-
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
-
-    public String getMiniPhoto() {
-        return miniPhoto;
-    }
-
-    public void setMiniPhoto(String miniPhoto) {
-        this.miniPhoto = miniPhoto;
-    }
-
-    public boolean isOnlineOffline() {
-        return onlineOffline;
-    }
-
-    public void setOnlineOffline(boolean onlineOffline) {
-        this.onlineOffline = onlineOffline;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public int getLike() {
-        return like;
-    }
-
-    public void setLike(int like) {
-        this.like = like;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public int getToShare() {
-        return toShare;
-    }
-
-    public void setToShare(int toShare) {
-        this.toShare = toShare;
-    }
-
-    public int getNumberOfViews() {
-        return numberOfViews;
-    }
-
-    public void setNumberOfViews(int numberOfViews) {
-        this.numberOfViews = numberOfViews;
-    }
 }
